@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html class="bg-[#323232]">
     <head>
-        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -13,7 +13,48 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="opacity-0 transition-opacity duration-1000">
+
+        <div class="relative flex flex-col justify-center overflow-hidden py-2 sm:py-6">
+            <div class="relative px-12 pt-10 pb-8">
+                <div class="mx-auto max-w-3xl">
+                    <div class="flex justify-between items-center mr-4">
+                        <div></div>
+                        <h1 class="text-[#111] text-3xl font-bold text-justify">HEHE HAHA HOHO</h1>
+
+                        <div x-data="{ isOpen: false }" class="flex justify-end items-center ">
+                            <!-- Menu -->
+                            <div x-show="isOpen" @click.away="isOpen = false" class="flex justify-around min-w-fit">
+                                <!-- Menu Items -->
+                                <a href="#" class="relative text-white hover:underline transform transition duration-500 ease-in-out">Home</a>
+                                <a href="#" class="relative text-white hover:underline transform transition duration-500 ease-in-out">About</a>
+                                <a href="#" class="relative text-white hover:underline transform transition duration-500 ease-in-out">Services</a>
+                                <a href="#" class="relative text-white hover:underline transform transition duration-500 ease-in-out">Contact</a>
+                            </div>
+
+                            <button @click="isOpen = !isOpen" type="button" class="text-[#111] group p-5  inline-flex items-center rounded-md text-base font-medium" aria-expanded="false">
+
+                                <span aria-hidden="true" class="-translate-x-4 block absolute h-1 w-8 bg-current rounded-[30px] transform transition duration-500 ease-in-out" :class="{'-rotate-45': isOpen,' -translate-y-2.5': !isOpen }"></span>
+                                <span aria-hidden="true" class="-translate-x-4 block absolute h-1 w-8 bg-current rounded-[30px] transform transition duration-500 ease-in-out" :class="{'opacity-0': isOpen } "></span>
+                                <span aria-hidden="true" class="-translate-x-4 block absolute h-1 w-8 bg-current rounded-[30px] transform transition duration-500 ease-in-out" :class="{'rotate-45': isOpen, ' translate-y-2.5': !isOpen}"></span>
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex flex-col justify-center overflow-hidden py-2 sm:py-6">
+            <div class="relative bg-[#171717] px-6 pt-10 pb-8 shadow-xl sm:mx-auto sm:max-w-3xl sm:rounded-[30px] sm:px-10">
+                <div class="mx-auto max-w-3xl">
+                    <div class="divide-y divide-gray-300/50">
+                        <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
+                            {% block body %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

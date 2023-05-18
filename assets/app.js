@@ -9,4 +9,12 @@
 import './styles/app.css';
 
 // start the Stimulus application
-import './bootstrap';
+// import './bootstrap';
+
+
+import '../node_modules/alpinejs/dist/cdn.js'
+
+// fade in the whole page
+window.onload = function() {
+    document.body.classList.add("opacity-100");
+};
